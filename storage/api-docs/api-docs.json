@@ -1,0 +1,697 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "darius@matulionis.lt"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "SwaggerHUB API Mocking"
+        }
+    ],
+    "paths": {
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "All Categories",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "indexCategories",
+                "parameters": [
+                    {
+                        "name": "products",
+                        "in": "query",
+                        "description": "All categories",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/categories/1": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get category by id",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "showCategories",
+                "parameters": [
+                    {
+                        "name": "categoris",
+                        "in": "query",
+                        "description": "Get category by id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/categories/store": {
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Create categories",
+                "operationId": "storeCategories",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Enter name of the category",
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "description": "Enter category image",
+                                        "type": "file"
+                                    },
+                                    "title": {
+                                        "description": "Enter category title",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Enter category description",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/categories/update/1": {
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Update category",
+                "operationId": "updateCategories",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Enter name of the category",
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "description": "Enter category image",
+                                        "type": "file"
+                                    },
+                                    "title": {
+                                        "description": "Enter category title",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Enter category description",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/categories/destroy/1": {
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "delete category",
+                "operationId": "destroyCategories",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/pages": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "All Pages",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "indexPages",
+                "parameters": [
+                    {
+                        "name": "pages",
+                        "in": "query",
+                        "description": "All pages",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/pages/1": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Get pages by id",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "showPages",
+                "parameters": [
+                    {
+                        "name": "pages",
+                        "in": "query",
+                        "description": "Get page by id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/pages/store": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Create pages",
+                "operationId": "storePages",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Enter name of the category",
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "description": "Enter category title",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Enter category description",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/pages/update/1": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Update pages",
+                "operationId": "updatePages",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Enter name of the page",
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "description": "Enter page title",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Enter page description",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/page/destroy/1": {
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "delete page",
+                "operationId": "destroyPages",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "All Products",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "indexProducts",
+                "parameters": [
+                    {
+                        "name": "products",
+                        "in": "query",
+                        "description": "All Products",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/products/1": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get products by id",
+                "description": "Multiple status values can be provided with comma separated string",
+                "operationId": "showProducts",
+                "parameters": [
+                    {
+                        "name": "products",
+                        "in": "query",
+                        "description": "Get product by id",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "available",
+                            "enum": [
+                                "available",
+                                "pending",
+                                "sold"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/products/store": {
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Create products",
+                "operationId": "storeProducts",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Enter name of the category",
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "description": "Enter category image",
+                                        "type": "file"
+                                    },
+                                    "title": {
+                                        "description": "Enter category title",
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "description": "Enter category id",
+                                        "type": "integer"
+                                    },
+                                    "description": {
+                                        "description": "Enter category description",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/products/update/1": {
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Update product",
+                "operationId": "updateProducts",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Enter name of the category",
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "description": "Enter category image",
+                                        "type": "file"
+                                    },
+                                    "category_id": {
+                                        "description": "Enter category id",
+                                        "type": "integer"
+                                    },
+                                    "title": {
+                                        "description": "Enter category title",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Enter category description",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/products/destroy/1": {
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "delete product",
+                "operationId": "destroyProducts",
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Registrate",
+                "operationId": "Register",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Enter your name",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "Enter your Email",
+                                        "type": "email"
+                                    },
+                                    "password": {
+                                        "description": "Enter your password",
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "Enter your password confirmation",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Authentificate",
+                "operationId": "Login",
+                "requestBody": {
+                    "description": "Input data format",
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "Enter your email",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Enter password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "apiKey",
+                "description": "Sanctum security laravel",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
