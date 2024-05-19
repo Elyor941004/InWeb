@@ -27,6 +27,7 @@
                     </td>
                 </tr>
             @endforeach
+            {{$pages>links("pagination::bootstrap-4")}}
             </tbody>
         </table>
     </div>
