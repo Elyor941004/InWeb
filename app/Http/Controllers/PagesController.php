@@ -14,7 +14,7 @@ class PagesController extends Controller
 
     public function index()
     {
-        $pages = Pages::paginate(10);
+        $pages = Pages::paginate(5);
         return view('pages.index', ["pages"=>$pages, 'page_page'=>$this->page]);
     }
 

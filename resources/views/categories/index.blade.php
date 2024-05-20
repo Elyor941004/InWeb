@@ -30,7 +30,7 @@
                     </td>
                 </tr>
             @endforeach
-            {{$categories>links("pagination::bootstrap-4")}}
+            {{$categories->links("pagination::bootstrap-4")}}
             </tbody>
         </table>
     </div>
